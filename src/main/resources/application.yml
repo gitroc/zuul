@@ -1,0 +1,29 @@
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://localhost:10001/eureka/
+
+spring:
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
+#      discovery:
+#        instance-id: eureka-song
+  application:
+    name: api-gateway
+server:
+  port: 10002
+
+zuul:
+  routes:
+   rebbin:
+    path: /rebbin/**
+    url: http://localhost:9527/
+   feign:
+    path: /feign/**
+#    url: http://localhost:9528/
+    serviceId: FEIGN-CLIENT
+
